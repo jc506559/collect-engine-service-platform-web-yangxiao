@@ -1507,7 +1507,6 @@
                   this.$message.error({message: "没有查询到数据量", type: "error"});
                   this.resetForm('downloadForm')
                 }
-
                 })
 
 
