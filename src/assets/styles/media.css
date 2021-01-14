@@ -1,0 +1,12 @@
+/*
+ * 媒体查询
+ */
+
+@media screen and (max-width: 3840px) {
+}
+
+@media screen and (max-width: 1350px) {
+  #app .app-layout-container {
+    overflow-x: scroll;
+  }
+}

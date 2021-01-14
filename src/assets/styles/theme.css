@@ -1,0 +1,86 @@
+/*
+ * 定制element-ui的样式文件
+ */
+
+/* 表格 */
+.el-table .cell {
+  line-height: 26px;
+}
+
+.el-table--mini,
+.el-table--small,
+.el-table__expand-icon {
+  font-size: 13px;
+}
+
+.el-table--small td,
+.el-table--small th {
+   padding:10px 0;
+}
+
+.el-table--enable-row-transition .el-table__body td {
+  -webkit-transition: none;
+  transition: none;
+}
+
+.el-table-column--selection .cell {
+  padding-right: 10px;
+}
+
+.el-table [class*=el-table__row--level] .el-table__expand-icon {
+  user-select: none;
+}
+
+/* 菜单 */
+.el-menu {
+  border-right: 0;
+}
+
+.el-menu-item {
+  transition: none;
+}
+
+.el-submenu__title {
+  transition: none;
+}
+.el-menu-item-group__title{
+	padding:0px;
+}
+/* 下拉菜单 */
+.el-popper[x-placement^=bottom],
+.el-tooltip__popper[x-placement^=bottom] {
+  margin-top: 5px;
+}
+
+/* 行内表单 */
+.el-form--inline .el-form-item {
+  margin-right: 15px;
+}
+
+.el-form--inline .el-form-item .el-form-item__label {
+  float: left;
+}
+
+/* 抽屉 */
+.el-drawer__close-btn {
+  outline: none;
+}
+
+/* select */
+.el-select-dropdown__item {
+  font-size: 13px;
+}
+
+.el-select-dropdown__empty {
+  font-size: 13px;
+}
+
+/* checkbox */
+.el-checkbox__input.is-focus .el-checkbox__inner {
+  border-color: #2aa1ef !important;
+}
+
+/* tab */
+.el-tabs__nav-wrap::after {
+  height: 1px;
+}

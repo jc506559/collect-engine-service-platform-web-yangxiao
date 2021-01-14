@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>测试规则编辑</title>
+  <style>
+    body{
+      padding:10px;
+      font-family: '微软雅黑';
+      font-size: 18px;
+      line-height: 24px;
+    }
+    input, textarea {
+      line-height: 40px;
+      padding-left: 8px;
+      border-radius:5px;
+      border: 1px solid #b5b5b5;
+    }
+    select{
+      border-radius:5px;
+      border: 1px solid #b5b5b5;
+      height: 40px;
+      font-family: '微软雅黑';
+      font-size: 14px;
+    }
+    option{
+      /*padding-top:15px;*/
+      font-size: 16px
+    }
+
+  </style>
+</head>
+<body>
+<table>
+  <tr>
+    <td style="color: #b5b5b5;font-family:'微软雅黑';font-size: 14px">输入</td>
+    <td><input id="input" type="text" placeholder="请输入输入内容"/></td>
+    <td style="color: #b5b5b5;font-family:'微软雅黑';font-size: 14px">输入类型</td>
+    <td><input id="inputType" type="text" placeholder="请输入输入类型"/></td></tr><tr>
+    <td style="color: #b5b5b5;font-family:'微软雅黑';font-size: 14px">筛选时间</td>
+    <td><input id="timeInterval" type="text" placeholder="请输入筛选时间"/></td>
+    <td style="color: #b5b5b5;font-family:'微软雅黑';font-size: 14px">筛选网址</td>
+    <td><input id="site" type="text" placeholder="请输入筛选网址"/></td>
+    <td style="color: #b5b5b5;font-family:'微软雅黑';font-size: 14px">通道名称</td>
+    <td><input id="channel" type="text" placeholder="请输入通道名称"/></td>
+  </tr>
+</table>
+<script>
+
+  window.custom = {
+    on_new: function() {
+      //新建一个新的规则，这里可以做一些默认的初始化
+      document.getElementById('input').value='';
+      document.getElementById('inputType').value='';
+      document.getElementById('timeInterval').value='';
+      document.getElementById('site').value='';
+      document.getElementById('channel').value='';
+    },
+    on_edit: function(rule) {
+      //编辑一个现有的规则，规则的值通过rule传递进来
+      //rule = '{"input":"双十二|伊朗","inputType":"keyword","timeInterval":"一月内","site":null,"channel":"baidu|360"}'
+      let data = JSON.parse(rule);//rule为规则字符串，本示例中采用json格式编码，这里进行解码，然后设置界面
+      document.getElementById('input').value = data.input;
+      document.getElementById('inputType').value = data.inputTyle;
+      document.getElementById('timeInterval').value = data.timeInterval;
+      document.getElementById('site').value = data.site;
+      document.getElementById('channel').value = data.channel;
+      document.getElementById('input').focus();
+    },
+    on_commit: function(ok_cb, error_cb) {
+      //用户点击了“确定”按钮，需要将用户编辑的内容通过ok_cb回调函数传递出去，如果发生错误，使用error_cb回调函数
+      let data = {};
+      data.input = document.getElementById('input').value;
+      data.inputType = document.getElementById('inputType').value ? document.getElementById('inputType').value : "";
+      data.timeInterval = document.getElementById('timeInterval').value ? document.getElementById('timeInterval').value : "";
+      data.site = document.getElementById('site').value;
+      data.channel = document.getElementById('channel').value;
+      if (!data.input) {
+        error_cb('输入内容不能为空');
+        return;
+      }
+      if(!data.site) {
+        error_cb('筛选网址不能为空');
+        return;
+      }
+      if(!data.channel) {
+        error_cb('通道不能为空');
+        return;
+      }
+      console.log(data)
+      let ruleString = JSON.stringify(data); //这个值就是传递给组件的规则值
+      ok_cb(ruleString);
+    }
+  };
+
+  //以下为本页面和上层页面交互代码，不需要修改
+  window.addEventListener('message', function (e) {
+    if (e.data && typeof e.data === "string") {
+      let msg = JSON.parse(e.data);
+      switch(msg.type) {
+        case 'new':
+          console.log("new");
+          if (window.custom) window.custom.on_new();
+          break;
+        case 'edit':
+          console.log("edit");
+          if (window.custom) window.custom.on_edit(msg.rule);
+          break;
+        case 'commit':
+          console.log("commit")
+          if (window.custom) window.custom.on_commit(function(ruleString){
+            parent.postMessage(JSON.stringify({type: 'commit_ok', rule: ruleString}), '*');
+          }, function(err){
+            parent.postMessage(JSON.stringify({type: 'commit_error', error: err}), '*');
+          });
+          break;
+      }
+    }
+  });
+</script>
+</body>
+</html>

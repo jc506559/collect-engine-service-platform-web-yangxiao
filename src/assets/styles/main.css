@@ -1,0 +1,375 @@
+/*
+ * 主体部分公共样式
+ *    全局类的样式, 必须以 app- 作为开头
+ */
+
+html,
+body {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+}
+
+/* vue指令 控制未赋值的渲染 */
+
+[v-cloak] {
+  display: none;
+}
+
+/* input背景色默认是黄色 */
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+/*滚动条样式--webkit*/
+
+/* 整体 */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background: transparent;
+  -webkit-border-radius: 6px;
+  cursor: pointer;
+}
+
+/* 内层轨道 */
+
+::-webkit-scrollbar-track-piece {
+  -webkit-border-radius: 0;
+  cursor: pointer;
+}
+
+/* 滑块 */
+
+::-webkit-scrollbar-thumb {
+  height: 50px;
+  -webkit-border-radius: 6px;
+  outline-offset: -2px;
+  background: #cccccc;
+  border: 2px solid #cccccc;
+  cursor: pointer;
+}
+
+/* 滑块悬停 */
+
+::-webkit-scrollbar-thumb:hover {
+  height: 50px;
+  background: #d7d5d5;
+  border: 2px solid #d7d5d5;
+  -webkit-border-radius: 6px;
+  cursor: pointer;
+}
+
+/*滚动条样式--ie*/
+
+body {
+  scrollbar-face-color: #014179;
+  /*滚动条颜色*/
+  scrollbar-highlight-color: #014179;
+  scrollbar-3dlight-color: #014179;
+  scrollbar-darkshadow-color: #014179;
+  scrollbar-Shadow-color: #014179;
+  /*滑块边色*/
+  scrollbar-arrow-color: #014179;
+  /*箭头颜色*/
+  scrollbar-track-color: #fefefe;
+  /*背景颜色*/
+}
+
+.app-fill-height {
+  height: 100%;
+}
+
+.app-width-percent-100 {
+  width: 100% !important;
+}
+
+.app-height-percent-50 {
+  height: 50% !important;
+}
+
+.app-margin-bottom-clear {
+  margin-bottom: 0px !important;
+}
+
+/* 文字颜色 */
+
+.app-color-blue {
+  color: #2aa1ef !important;
+}
+
+.app-color-green {
+  color: #45c130 !important;
+}
+
+.app-color-red {
+  color: #f85d63 !important;
+}
+
+.app-color-orange {
+  color: #fd8824 !important;
+}
+
+/* 背景颜色 */
+
+.app-bg-color-blue {
+  background-color: #2aa1ef !important;
+}
+
+.app-bg-color-green {
+  background-color: #45c130 !important;
+}
+
+.app-bg-color-red {
+  background-color: #f85d63 !important;
+}
+
+.app-bg-color-orange {
+  background-color: #fd8824 !important;
+}
+
+/* 边框颜色 */
+
+.app-border-color-blue {
+  border-color: #2aa1ef !important;
+}
+
+.app-border-color-green {
+  border-color: #45c130 !important;
+}
+
+.app-border-color-red {
+  border-color: #f85d63 !important;
+}
+
+.app-border-color-orange {
+  border-color: #fd8824 !important;
+}
+
+/* 背景透明 */
+
+.app-transparent {
+  background: transparent;
+}
+
+/* 公共模块 */
+
+/* 页面容器 */
+.app-page-container {
+  padding: 15px
+}
+
+/* 页面标题和描述 */
+
+.app-title {
+  height: 100px;
+  background: linear-gradient(90deg, #3eacf9 0%, #43ceee);
+  padding: 0 20px;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 15px;
+  display: flex;
+}
+
+.app-title .img{
+  margin-right: 20px;
+}
+.app-title .img{
+  width:70px;
+}
+.app-title > div{
+  padding-top: 15px;
+}
+
+.app-title .text div:first-child {
+  font-size: 14px;
+  padding-top: 15px;
+}
+
+.app-title .text div:nth-child(2) {
+  font-size: 12px;
+  padding-top: 10px;
+}
+
+/* 页面标签页 */
+.app-tabs {
+  height: 40px;
+  line-height: 40px;
+  margin-bottom: 15px;
+}
+
+.app-tabs .el-tabs__header {
+  margin: 0;
+}
+
+/* 搜索模块 */
+
+.app-search {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 15px 15px 0;
+  color: #333;
+  border: 1px solid rgba(232, 232, 232, 1);
+}
+
+.app-search .app-search-title {
+  font-size: 14px;
+  padding-bottom: 15px;
+  font-weight: 500;
+}
+
+.app-search .app-search-title-icon {
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+/* 按钮组 */
+
+.app-btn-group {
+  position: relative;
+  margin-bottom: 15px;
+  height: 32px;
+  line-height: 32px;
+}
+
+.app-btn-group .el-button + .el-dropdown {
+  margin-left: 10px;
+}
+
+.app-btn-group .el-dropdown + .el-button {
+  margin-left: 10px;
+}
+
+/* 表格 | 快捷过滤 */
+
+.app-table-filter {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.app-table-filter .el-input__prefix {
+  left: 10px;
+}
+
+.app-table-filter .el-input__suffix {
+  right: 10px;
+}
+
+.app-table-filter .el-input--small .el-input__icon {
+  font-size: 14px;
+}
+
+/* 表格 */
+
+.app-table {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* 表格 | 操作列 */
+
+.app-table .app-table-column-operate {
+}
+
+.app-table .app-table-column-operate .iconfont {
+  cursor: pointer;
+  margin: 0 8px;
+  outline: none;
+  color: #666;
+}
+
+/* 列表内图标hover */
+.app-table .app-table-column-operate .iconfont:hover{
+  color: #4b9fe9;
+}
+.app-table .app-table-column-operate .iconfont.icon-shanchu:hover{
+  color: #f85d63;
+}
+
+.app-table .app-table-column-operate .iconfont.disabled {
+  color: #bbb;
+  cursor: not-allowed;
+}
+
+/* 分页模块 */
+
+.app-pagination {
+  text-align: center;
+  margin-bottom: 15px;
+  overflow: auto;
+}
+
+/* 按钮 */
+
+.app-button {
+}
+
+.app-button .iconfont {
+  font-size: 12px;
+  margin-right: 5px;
+}
+.app-table{
+	margin-bottom:0;
+
+}
+.app-pagination{
+	background:#fff;
+	padding:15px 0;
+}
+
+/*模块通用表单外层样式*/
+.app-page-box{
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #9d9d9d;
+  margin: 0 0 16px 0;
+  border-radius: 4px;
+  /* box-shadow: 0 3px 14px rgba(110, 127, 136, .1); */
+}
+
+.app-page-box.no-border-bottom {
+  border-bottom: none;
+}
+
+.app-page-box .app-page-box-header{
+  height: 34px;
+  line-height: 34px;
+  overflow: hidden;
+  border-bottom: 1px solid #e8e8e8;
+  background: linear-gradient(#ffffff, #f8f8f8);
+  color: #666666;
+  font-size: 14px;
+  text-align: left;
+  font-weight: 500;
+  padding: 0 10px;
+}
+
+.app-page-box .app-page-box-header.bg-white{
+  background-color: #ffffff;
+  border-bottom: none;
+  margin-top: 12px;
+}
+
+.app-page-box .app-page-box-header i{
+  padding-right: 7px;
+  font-size: 20px;
+  position: relative;
+  top: 1px;
+}
+
+.app-page-box .app-page-box-header .name{
+  position: relative;
+  top: -2px;
+}
+
+.app-page-box .app-page-box-content{
+  color: #333333;
+  font-size: 13px;
+  text-align: left;
+  position: relative;
+}
